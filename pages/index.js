@@ -7,8 +7,18 @@ import {GlobalContext} from '../context/global'
 export default function Home() {
 
   const c = useContext(GlobalContext)
-  console.log(c)
-  return <div></div>
+  const players = c.players
+  return (
+  <div>{players.map(p => {
+    return (
+      <div >
+        <span>{p.name} |</span>
+        <span> {p.score} | </span>
+        <button onClick={() => {c.incPlayerScore(p.id)}}> increment </button>
+      </div>
+    )
+  })}</div>
+  )
 
 }
 

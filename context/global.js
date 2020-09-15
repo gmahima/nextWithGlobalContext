@@ -16,9 +16,16 @@ export const GlobalContextProvider = ({children}) => {
         }
     ]
     const [players, setPlayers] = useState(initialPlayers)
+    const incPlayerScore = ((id) => {
+        const n = [...players]
+        const player = n.find(p => p.id === id)
+        player.score += 10;
+        setPlayers(n)
+    })
     return (
         <GlobalContext.Provider value={{
-            players
+            players,
+            incPlayerScore
         }} >
             {children}
 
